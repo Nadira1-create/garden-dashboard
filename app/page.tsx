@@ -65,8 +65,23 @@ const plantData = [
 ];
 
 const Dashboard = () => {
-  const [sensorData, setSensorData] = useState<any[]>([]);
-  const [currentWeather, setCurrentWeather] = useState<any>(null);
+  const [sensorData, setSensorData] = useState<Array<{
+  time: string;
+  fullTime: Date;
+  soilMoisture: number;
+  temperature: number;
+  humidity: number;
+  lightLevel: number;
+  ph: string;
+}>>([]);
+
+const [currentWeather, setCurrentWeather] = useState<{
+  temperature: number;
+  humidity: number;
+  windSpeed: number;
+  condition: string;
+  uvIndex: number;
+} | null>(null);
   const [loading, setLoading] = useState(true);
 
   // Simulate fetching data from APIs
